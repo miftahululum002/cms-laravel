@@ -5,7 +5,7 @@ Dikembangkan oleh Miftahul Ulum dengan framework Laravel.
 ## Person
 
 <a href="https://miftahululum002.github.io">Github Pages</a><br/>
-<a href="mailto:ulumiftahul06@gmail.com">Email Me</a>
+<a href="mailto:ulumiftahul06@gmail.com">Email me</a>
 
 ## Laravel
 
