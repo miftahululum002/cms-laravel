@@ -12,4 +12,14 @@ class Post extends Model
     protected $fillable = ['title', 'slug', 'content'];
     protected $guarded = ['id'];
     public $timestamps = false;
+
+    public function categories_data()
+    {
+        return $this->belongsToMany(Category::class, 'posts_categories', 'post_id', 'category_id');
+    }
+
+    public function author()
+    {
+        return $this->hasOne(User::class, 'id', 'created_by');
+    }
 }
