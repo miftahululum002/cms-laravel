@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class PostHomeController extends Controller
 {
-    protected $directory = 'Dashboard';
-
+    protected $directory = 'Home/Post';
+    protected $isHome = true;
     public function index()
     {
-        $this->data['title'] = 'Dashboard';
+        $this->data['title'] = 'Blog';
         return $this->render('Index');
     }
 }
