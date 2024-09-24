@@ -9,7 +9,9 @@ export default function DangerButton({
     return (
         <Button
             {...props}
-            className={`bg-red-600 ${disabled && "opacity-25"} ` + className}
+            className={
+                `bg-red-600 text-white ${disabled && "opacity-25"} ` + className
+            }
             disabled={disabled}
         >
             {children}
