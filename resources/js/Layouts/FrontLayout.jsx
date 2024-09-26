@@ -116,10 +116,11 @@ export default function Front({ children }) {
                                 {home_categories.map((category, index) => (
                                     <li key={index}>
                                         <a
-                                            href={route(
-                                                "home.blog.categories",
+                                            href={
+                                                route("home.blog.index") +
+                                                "?category=" +
                                                 category.slug
-                                            )}
+                                            }
                                             className="inline-block text-base hover:text-primary mb-3"
                                         >
                                             {category.name}
