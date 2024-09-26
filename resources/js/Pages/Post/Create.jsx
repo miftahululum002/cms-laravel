@@ -1,6 +1,4 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import Checkbox from "@/Components/Checkbox";
-import GuestLayout from "@/Layouts/GuestLayout";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
@@ -8,13 +6,16 @@ import TextInput from "@/Components/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
 import TextArea from "@/Components/TextArea";
 import { useState } from "react";
-export default function Login({ status, title, categories }) {
+import slugify from "../../Helper";
+export default function Create({ status, title, categories }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         title: "",
         content: "",
         categories: [],
+        slug: "",
     });
     const [selectedCategories, setselectedCategories] = useState([]);
+    const [judul, setJudul] = useState("");
     const handleChangeCategories = (event) => {
         const selectedOptions = Array.from(event.target.selectedOptions).map(
             (option) => option.value
@@ -22,14 +23,17 @@ export default function Login({ status, title, categories }) {
         setselectedCategories(selectedOptions);
         setData("categories", selectedOptions);
     };
+    const handleJudul = (e) => {
+        setJudul(e.target.value);
+        // setData("slug", slugify(e.target.value));
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         post(route("dashboard.posts.store"), {
-            onFinish: () => reset("content"),
+            // onFinish: () => reset("content"),
         });
     };
-
     return (
         <AuthenticatedLayout
             header={
@@ -47,19 +51,25 @@ export default function Login({ status, title, categories }) {
             <div className="w-1/2 mx-auto my-10 bg-white p-2">
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
-                        <InputLabel htmlFor="title" value="Judul" />
+                        <InputLabel htmlFor="judul" value="Judul" />
                         <TextInput
-                            id="title"
+                            id="judul"
                             type="text"
-                            name="title"
-                            value={data.title}
+                            // name="title"
+                            value={judul}
                             className="mt-1 block w-full"
                             autoComplete="title"
                             placeholder="Judul"
                             isFocused={true}
-                            onChange={(e) => setData("title", e.target.value)}
+                            onChange={handleJudul}
                         />
                         <InputError message={errors.title} className="mt-2" />
+                        <TextInput
+                            type="hidden"
+                            id="slug"
+                            name="slug"
+                            value={data.slug}
+                        />
                     </div>
                     <div className="mb-3">
                         <InputLabel htmlFor="categories" value="Kategori" />

@@ -11,9 +11,7 @@ export default function Home({ auth, title }) {
                         <div className="w-full self-center px-4 lg:w-1/2">
                             <h1 className="text-base font-semibold text-primary md:text-xl">
                                 Halo Semua 👋, saya
-                                <span className="mt-1 block text-4xl font-bold text-dark lg:text-5xl">
-                                    App Name
-                                </span>
+                                <span className="mt-1 block text-4xl font-bold text-dark lg:text-5xl"></span>
                             </h1>
                             <h2 className="mb-5 text-lg font-medium text-secondary lg:text-2xl">
                                 IT Enthusiast &

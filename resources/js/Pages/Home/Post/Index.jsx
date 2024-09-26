@@ -1,7 +1,7 @@
 import Front from "@/Layouts/FrontLayout";
 import { Link, Head } from "@inertiajs/react";
 
-export default function Home({ auth, title }) {
+export default function Home({ title, posts }) {
     return (
         <Front>
             <Head title={title} />
@@ -23,90 +23,38 @@ export default function Home({ auth, title }) {
                         </div>
                     </div>
                     <div className="flex flex-wrap" id="blog-content">
-                        <div className="w-full px-4 lg:w-1/2 xl:w-1/3">
-                            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
-                                <img
-                                    src="dist/img/blog/1.jpeg"
-                                    alt="Programming"
-                                />
-                                <div className="py-8 px-4">
-                                    <h3>
+                        {posts.map((post, index) => (
+                            <div className="w-full px-4 lg:w-1/2 xl:w-1/4">
+                                <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10 max-h-96">
+                                    <img
+                                        src="dist/img/blog/1.jpeg"
+                                        alt="Programming"
+                                    />
+                                    <div className="py-8 px-4">
+                                        <h3>
+                                            <a
+                                                href="#"
+                                                className="block mb-3 font-semibold text-xl text-dark hover:text-primary truncate"
+                                            >
+                                                {post.title}
+                                            </a>
+                                        </h3>
+                                        <p className="font-medium text-base text-secondary mb-4">
+                                            {post.content.substring(0, 50)} ...
+                                        </p>
                                         <a
-                                            href="#"
-                                            className="block mb-3 font-semibold text-xl text-dark hover:text-primary truncate"
+                                            href={route(
+                                                "home.blog.read",
+                                                post.slug
+                                            )}
+                                            className="font-medium text-white bg-primary py-2 px-4 rounded-none hover:opacity-80"
                                         >
-                                            Tips Belajar Programming
+                                            Selengkapnya
                                         </a>
-                                    </h3>
-                                    <p className="font-medium text-base text-secondary mb-4">
-                                        Lorem ipsum dolor sit amet consectetur,
-                                        adipisicing elit. Provident,
-                                        repudiandae.
-                                    </p>
-                                    <a
-                                        href="blog.html"
-                                        className="font-medium text-white bg-primary py-2 px-4 rounded-lg hover:opacity-80"
-                                    >
-                                        Selengkapnya
-                                    </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="w-full px-4 lg:w-1/2 xl:w-1/3">
-                            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
-                                <img
-                                    src="dist/img/blog/2.jpg"
-                                    alt="Mechanical keyboard"
-                                />
-                                <div className="py-8 px-4">
-                                    <h3>
-                                        <a
-                                            href="blog.html"
-                                            className="block mb-3 font-semibold text-xl text-dark hover:text-primary truncate"
-                                        >
-                                            Review Mechanical Keyboard
-                                        </a>
-                                    </h3>
-                                    <p className="font-medium text-base text-secondary mb-4">
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Esse repellendus, unde
-                                        recusandae nesciunt rem optio.
-                                    </p>
-                                    <a
-                                        href="#"
-                                        className="font-medium text-white bg-primary py-2 px-4 rounded-lg hover:opacity-80"
-                                    >
-                                        Selengkapnya
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="w-full px-4 lg:w-1/2 xl:w-1/3">
-                            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
-                                <img src="dist/img/blog/1.jpeg" alt="Coffe" />
-                                <div className="py-8 px-4">
-                                    <h3>
-                                        <a
-                                            href="blog.html"
-                                            className="block mb-3 font-semibold text-xl text-dark hover:text-primary truncate"
-                                        >
-                                            Menikmati Secangkir Kopi
-                                        </a>
-                                    </h3>
-                                    <p className="font-medium text-base text-secondary mb-4">
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Deleniti,
-                                        reprehenderit.
-                                    </p>
-                                    <a
-                                        href="blog.html"
-                                        className="font-medium text-white bg-primary py-2 px-4 rounded-lg hover:opacity-80"
-                                    >
-                                        Selengkapnya
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
