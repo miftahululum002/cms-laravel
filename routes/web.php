@@ -25,7 +25,7 @@ Route::name('home.')->group(function () {
         Route::prefix('blog')->group(function () {
             Route::controller(PostHomeController::class)->group(function () {
                 Route::get('/', 'index')->name('index');
-                Route::get('/categories/{category}', 'categories')->name('categories');
+                Route::get('/read/{slug}', 'read')->name('read');
             });
         });
     });
