@@ -24,7 +24,8 @@ class PostStoreRequest extends FormRequest
         return [
             'title' => 'required',
             'content' => 'required',
-            'categories' => 'nullable'
+            'categories' => 'nullable',
+            'slug' => 'required',
         ];
     }
 }

@@ -28,6 +28,7 @@ class PostController extends Controller
 
     public function store(PostStoreRequest $request)
     {
+        // $request->slug = getSlug($request->title);
         $input = $request->validated();
         $data = $input;
         $data['slug'] = getSlug($input['title']);
