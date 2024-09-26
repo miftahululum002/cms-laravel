@@ -90,12 +90,46 @@ function deletePostCategory($postId)
 {
     return PostCategory::where('post_id', $postId)->delete();
 }
+
 function getCategories()
 {
     return Category::all();
 }
 
+function getCategoryBySlug($slug)
+{
+    return Category::where('slug', $slug)->first();
+}
+
 function deletePost($id)
 {
     return Post::where('id', $id)->update(['is_deleted' => '1', 'deleted_at' => date('Y-m-d H:i:s')]);
+}
+
+function getPostForHome($category = null, $limit = 4)
+{
+    if ($category) {
+        return Post::where('is_deleted', '0')->whereHas('categories_data', function ($query) use ($category) {
+            $query->where('category_id', $category);
+        })->orderBy('created_at', 'DESC')->limit($limit)->get();
+    }
+    return getLatestPost($limit);
+}
+
+function getLatestPost($limit = 4)
+{
+    return Post::where('is_deleted', '0')->orderBy('created_at', 'DESC')->limit($limit)->get();
+}
+
+function getPostBySlug($slug)
+{
+    return getPostQuery(['slug' => $slug], true);
+}
+
+function getPostQuery($where, $single = true)
+{
+    if ($single) {
+        return Post::where($where)->where('is_deleted', '0')->first();
+    }
+    return Post::where($where)->where('is_deleted', '0')->get();
 }
