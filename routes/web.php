@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 //         'phpVersion' => PHP_VERSION,
 //     ]);
 // })->name('index');
+// Route::get('coba', function () {
+//     return view('coba');
+// });
 Route::name('home.')->group(function () {
     Route::controller(HomeController::class)->group(function () {
         Route::get('/', 'index')->name('index');
