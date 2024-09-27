@@ -8,7 +8,7 @@ export default function Home({ title, posts }) {
             <section id="home" className="pt-36">
                 <div className="container">
                     <div className="flex flex-wrap">
-                        <div className="w-full self-center px-4">
+                        <div className="w-full self-center px-4 py-40">
                             <h1 className="text-base font-semibold text-primary md:text-xl">
                                 Selamat Datang Semua 👋
                                 <span className="mt-1 block text-4xl font-bold text-dark lg:text-5xl"></span>
@@ -32,7 +32,7 @@ export default function Home({ title, posts }) {
 
                             <a
                                 href={route("home.contact")}
-                                className="rounded-full bg-primary py-3 px-8 text-base font-semibold text-white transition duration-300 ease-in-out hover:opacity-80 hover:shadow-lg"
+                                className="rounded-full bg-primary py-3 px-8 text-base font-semibold text-white transition duration-300 ease-in-out hover:opacity-80 hover:shadow-lg mb-10"
                             >
                                 Hubungi Kami
                             </a>

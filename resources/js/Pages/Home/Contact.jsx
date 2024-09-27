@@ -10,7 +10,7 @@ export default function Home({ title }) {
                     <div className="w-full px-4">
                         <div className="max-w-xl mx-auto text-center mb-16">
                             <h4 className="font-semibold text-lg text-primary mb-2">
-                                Kontak Saya
+                                Kontak Kami
                             </h4>
                             <h2 className="font-bold text-3xl mb-4 sm:text-4xl lg:text-5xl">
                                 Hubungi Kami
@@ -33,7 +33,7 @@ export default function Home({ title }) {
                                 <input
                                     type="text"
                                     id="name"
-                                    className="w-full bg-slate-200 text-dark p-3 rounded-none focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary"
+                                    className="w-full text-dark p-3 rounded-none focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary"
                                     placeholder="Nama"
                                 />
                             </div>
@@ -48,7 +48,7 @@ export default function Home({ title }) {
                                 <input
                                     type="email"
                                     id="email"
-                                    className="w-full bg-slate-200 text-dark p-3 rounded-none focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary"
+                                    className="w-full text-dark p-3 rounded-none focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary"
                                     placeholder="Email"
                                 />
                             </div>
@@ -62,14 +62,14 @@ export default function Home({ title }) {
                                 </label>
                                 <textarea
                                     id="message"
-                                    className="w-full bg-slate-200 text-dark p-3 rounded-none focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary h-32"
+                                    className="w-full text-dark p-3 rounded-none focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary h-32"
                                     placeholder="Pesan"
                                 ></textarea>
                             </div>
                             <div className="w-full px-4">
                                 <button
                                     type="button"
-                                    className="text-base text-white bg-primary py-3 px-8 rounded-full w-full hover:opacity-80 hover:shadow-lg transition duration-500"
+                                    className="text-base text-white bg-primary py-2 px-8 rounded-none w-full hover:opacity-80 hover:shadow-lg transition duration-500"
                                 >
                                     Kirim
                                 </button>
