@@ -12,10 +12,15 @@ class PostHomeController extends Controller
     public function index(Request $request)
     {
         $category = !empty($request->category) ? $request->category : null;
-        $this->data['title'] = 'Blog';
         $cat = getCategoryBySlug($category);
         $categoryId = $cat ? $cat->id : null;
         $posts = getPostForHome($categoryId, 4);
+        $title = 'Blog ';
+        if (!empty($cat)) {
+            $title .= $cat->name;
+        }
+
+        $this->data['title'] = $title;
         $this->data['posts'] = $posts;
         return $this->render('Index');
     }

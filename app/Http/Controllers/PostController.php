@@ -32,6 +32,10 @@ class PostController extends Controller
         $data = $input;
         $data['slug'] = getSlug($input['title']);
         $data['created_by'] = getUserLoginId();
+        if ($request->hasFile('image')) {
+            $data['image'] = uploadImagePost($request->file('image'));
+        }
+
         try {
             $process = createPost($data);
             if (!$process['success']) {
@@ -83,8 +87,9 @@ class PostController extends Controller
         $userId = getUserLoginId();
         $data['updated_by'] = $userId;
         unset($data['id']);
+        $postData = getPostById($id);
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('images');
+            $data['image'] = uploadImagePost($request->file('image'), $postData->image);
         }
         try {
             updatePost($id, $data);
