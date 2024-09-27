@@ -8,11 +8,20 @@ import TextArea from "@/Components/TextArea";
 import { useState } from "react";
 
 export default function Login({ post, status, title, categories }) {
-    const { data, setData, patch, processing, errors, reset } = useForm({
+    const {
+        data,
+        setData,
+        post: update,
+        processing,
+        errors,
+        reset,
+    } = useForm({
         id: post.id,
         title: post.title,
         content: post.content,
         categories: post.categories,
+        image: post.image,
+        _method: "PATCH",
     });
 
     const [selectedCategories, setselectedCategories] = useState([]);
@@ -26,7 +35,8 @@ export default function Login({ post, status, title, categories }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        patch(route("dashboard.posts.update"), {
+        update(route("dashboard.posts.update"), {
+            forceFormData: true,
             onFinish: () => reset("content"),
         });
     };
@@ -96,6 +106,22 @@ export default function Login({ post, status, title, categories }) {
                         ></TextArea>
                         <InputError message={errors.content} className="mt-2" />
                     </div>
+                    <div className="mb-3">
+                        <InputLabel htmlFor="image" value="Gambar" />
+                        <TextInput
+                            id="image"
+                            type="file"
+                            name="image"
+                            className="mt-1 block w-full"
+                            placeholder="Gambar"
+                            isFocused={true}
+                            onChange={(e) =>
+                                setData("image", e.target.files[0])
+                            }
+                        />
+                        <InputError message={errors.image} className="mt-2" />
+                    </div>
+
                     <div className="flex items-center justify-end mt-4">
                         <PrimaryButton className="ms-4" disabled={processing}>
                             Simpan
