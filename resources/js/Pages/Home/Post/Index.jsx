@@ -24,11 +24,15 @@ export default function Home({ title, posts }) {
                     </div>
                     <div className="flex flex-wrap" id="blog-content">
                         {posts.map((post, index) => (
-                            <div className="w-full px-4 lg:w-1/2 xl:w-1/4">
+                            <div
+                                key={index}
+                                className="w-full px-4 lg:w-1/2 xl:w-1/4"
+                            >
                                 <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10 max-h-96">
                                     <img
-                                        src="dist/img/blog/1.jpeg"
-                                        alt="Programming"
+                                        src={"/storage/" + post.image}
+                                        className="w-full h-48 object-cover"
+                                        alt={post.title}
                                     />
                                     <div className="py-8 px-4">
                                         <h3>
