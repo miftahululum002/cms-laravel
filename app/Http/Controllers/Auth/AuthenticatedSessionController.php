@@ -15,8 +15,11 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      */
-    public function create()
+    public function create(Request $request)
     {
+        if ($request->user()) {
+            return redirect()->route('dashboard.index');
+        }
         $this->data['canResetPassword'] = Route::has('password.request');
         $this->data['status'] = session('status');
         $this->data['title'] = 'Login';
@@ -29,9 +32,9 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
-
+        // setSession('is_login', true);
+        $request->session()->put('is_login', true);
         return redirect()->intended(route('dashboard', absolute: false));
     }
 
@@ -41,11 +44,8 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect('/');
     }
 }
