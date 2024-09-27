@@ -137,15 +137,15 @@ export default function Front({ children }) {
                         </div>
                         <p className="font-medium text-xs text-slate-500 text-center">
                             Dibuat dengan{" "}
-                            <span className="text-pink-500">❤️</span> oleh
+                            <span className="text-pink-500">❤️</span> oleh{" "}
                             <a
-                                href="#"
+                                href={author.github}
                                 target="_blank"
                                 className="text-bold text-primary"
                             >
-                                Author
+                                {author.name}
                             </a>
-                            , menggunakan
+                            , menggunakan{" "}
                             <a
                                 href="https://tailwindcss.com"
                                 target="_blank"
