@@ -13,6 +13,7 @@ export default function Authenticated({ header, children }) {
     const menus = [
         { name: "Dashboard", route: "dashboard" },
         { name: "Tulisan", route: "dashboard.posts.index" },
+        { name: "Kategori Tulisan", route: "dashboard.categories.index" },
     ];
     return (
         <div className="min-h-screen bg-gray-100">
