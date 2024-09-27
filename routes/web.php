@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -53,6 +54,19 @@ Route::middleware(['auth'])->group(function () {
                         Route::get('show/{post}', 'show')->name('show');
                         Route::post('/store', 'store')->name('store');
                         Route::patch('/update', 'update')->name('update');
+                        Route::delete('/delete', 'destroy')->name('destroy');
+                    });
+                });
+            });
+            Route::prefix('categories')->group(function () {
+                Route::name('categories.')->group(function () {
+                    Route::controller(CategoryController::class)->group(function () {
+                        Route::get('/', 'index')->name('index');
+                        Route::get('create', 'create')->name('create');
+                        Route::get('edit/{category}', 'edit')->name('edit');
+                        Route::post('/store', 'store')->name('store');
+                        Route::patch('/update', 'update')->name('update');
+                        Route::patch('/activate', 'activate')->name('activate');
                         Route::delete('/delete', 'destroy')->name('destroy');
                     });
                 });
