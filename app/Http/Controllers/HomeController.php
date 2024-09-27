@@ -12,6 +12,8 @@ class HomeController extends Controller
     public function index()
     {
         $this->data['title'] = 'Beranda';
+        $posts = getLatestPost(3);
+        $this->data['posts'] = $posts;
         return $this->render('Index');
     }
 

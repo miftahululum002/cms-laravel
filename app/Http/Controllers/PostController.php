@@ -28,7 +28,6 @@ class PostController extends Controller
 
     public function store(PostStoreRequest $request)
     {
-        // $request->slug = getSlug($request->title);
         $input = $request->validated();
         $data = $input;
         $data['slug'] = getSlug($input['title']);
@@ -84,6 +83,9 @@ class PostController extends Controller
         $userId = getUserLoginId();
         $data['updated_by'] = $userId;
         unset($data['id']);
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('images');
+        }
         try {
             updatePost($id, $data);
             return redirect(route('dashboard.posts.index'));
