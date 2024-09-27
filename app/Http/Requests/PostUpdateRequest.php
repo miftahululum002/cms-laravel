@@ -25,7 +25,8 @@ class PostUpdateRequest extends FormRequest
             'id' => 'required|exists:App\Models\Post,id',
             'title' => 'required',
             'content' => 'required',
-            'categories' => 'nullable'
+            'categories' => 'nullable',
+            'image' => 'nullable',
         ];
     }
 }
