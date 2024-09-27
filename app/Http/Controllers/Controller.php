@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use Illuminate\Http\Request;
 
 abstract class Controller
 {
@@ -23,9 +24,10 @@ abstract class Controller
 
     private function setDataHook()
     {
+
         if ($this->isHome) {
-            $this->data['auth'] = auth()->user();
             $this->data['home_categories'] = getCategories();
+            // $this->data['is_login'] = getSession('is_login');
         }
         $this->data['author'] = config('miftahululum.author');
     }
