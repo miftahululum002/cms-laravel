@@ -12,20 +12,15 @@ export default function Create({ status, title, categories }) {
         title: "",
         content: "",
         categories: [],
-        slug: "",
+        image: "",
     });
     const [selectedCategories, setselectedCategories] = useState([]);
-    const [judul, setJudul] = useState("");
     const handleChangeCategories = (event) => {
         const selectedOptions = Array.from(event.target.selectedOptions).map(
             (option) => option.value
         );
         setselectedCategories(selectedOptions);
         setData("categories", selectedOptions);
-    };
-    const handleJudul = (e) => {
-        setJudul(e.target.value);
-        // setData("slug", slugify(e.target.value));
     };
 
     const handleSubmit = (e) => {
@@ -51,25 +46,19 @@ export default function Create({ status, title, categories }) {
             <div className="w-1/2 mx-auto my-10 bg-white p-2">
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
-                        <InputLabel htmlFor="judul" value="Judul" />
+                        <InputLabel htmlFor="title" value="Judul" />
                         <TextInput
-                            id="judul"
+                            id="title"
                             type="text"
                             // name="title"
-                            value={judul}
+                            value={data.title}
                             className="mt-1 block w-full"
                             autoComplete="title"
                             placeholder="Judul"
                             isFocused={true}
-                            onChange={handleJudul}
+                            onChange={(e) => setData("title", e.target.value)}
                         />
                         <InputError message={errors.title} className="mt-2" />
-                        <TextInput
-                            type="hidden"
-                            id="slug"
-                            name="slug"
-                            value={data.slug}
-                        />
                     </div>
                     <div className="mb-3">
                         <InputLabel htmlFor="categories" value="Kategori" />
@@ -107,6 +96,21 @@ export default function Create({ status, title, categories }) {
                             onChange={(e) => setData("content", e.target.value)}
                         ></TextArea>
                         <InputError message={errors.content} className="mt-2" />
+                    </div>
+                    <div className="mb-3">
+                        <InputLabel htmlFor="image" value="Gambar" />
+                        <TextInput
+                            id="image"
+                            type="file"
+                            name="image"
+                            className="mt-1 block w-full"
+                            placeholder="Gambar"
+                            isFocused={true}
+                            onChange={(e) =>
+                                setData("image", e.target.files[0])
+                            }
+                        />
+                        <InputError message={errors.image} className="mt-2" />
                     </div>
                     <div className="flex items-center justify-end mt-4">
                         <PrimaryButton className="ms-4" disabled={processing}>
