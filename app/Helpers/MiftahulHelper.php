@@ -44,21 +44,28 @@ function createPostCategories($data)
 
 function updatePost($id, $data)
 {
-    $categories = $data['categories'];
+    $categories = !empty($data['categories']) ? $data['categories'] : null;
     unset($data['categories']);
     $postData = Post::find($id);
     $cat = $postData->categories_data;
-    $catId = array_map(function ($cat) {
-        return $cat['id'];
-    }, $cat->toArray());
-
-    $deletedCategories = array_udiff($catId, $categories, function ($a, $b) {
-        return $a == $b ? 0 : ($a > $b ? 1 : -1);
-    });
+    $catId = null;
+    if ($cat) {
+        $catId = array_map(function ($cat) {
+            return $cat['id'];
+        }, $cat->toArray());
+    }
+    $deletedCategories = null;
+    if (!empty($catId) && !empty($categories)) {
+        $deletedCategories = array_udiff($catId, $categories, function ($a, $b) {
+            return $a == $b ? 0 : ($a > $b ? 1 : -1);
+        });
+    }
 
     try {
         Post::where('id', $id)->update($data);
-        deletePostCategoryIn($id, $deletedCategories);
+        if (!empty($deletedCategories)) {
+            deletePostCategoryIn($id, $deletedCategories);
+        }
         foreach ($categories as $key => $value) {
             createPostCategoryIfNotExists($id, $value, ['updated_by' => $data['updated_by'], 'created_by' => $data['updated_by']]);
         }
