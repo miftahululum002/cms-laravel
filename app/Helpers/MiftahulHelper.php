@@ -3,6 +3,7 @@
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\PostCategory;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 function getUserLoginId()
@@ -100,6 +101,11 @@ function deletePostCategory($postId)
 
 function getCategories()
 {
+    return Category::where('is_deleted', '0')->get();
+}
+
+function getAllCategories()
+{
     return Category::all();
 }
 
@@ -111,6 +117,11 @@ function getCategoryBySlug($slug)
 function deletePost($id)
 {
     return Post::where('id', $id)->update(['is_deleted' => '1', 'deleted_at' => date('Y-m-d H:i:s')]);
+}
+
+function getPostById($id)
+{
+    return getPostQuery(['id' => $id], true);
 }
 
 function getPostForHome($category = null, $limit = 4)
@@ -139,4 +150,34 @@ function getPostQuery($where, $single = true)
         return Post::where($where)->where('is_deleted', '0')->first();
     }
     return Post::where($where)->where('is_deleted', '0')->get();
+}
+
+function uploadImagePost($file, $imageOld = null)
+{
+    return uploadFile($file, 'images/posts', $imageOld);
+}
+
+function uploadFile($file, $directory = 'images', $oldFile = null)
+{
+    $data = $file->store($directory);
+    if ($oldFile) {
+        Storage::delete($oldFile);
+    }
+    return $data;
+}
+
+function createCategory($data)
+{
+    return Category::create($data);
+}
+
+function updateCategory($id, $data)
+{
+    return Category::where('id', $id)->update($data);
+}
+
+function deleteCategory($id)
+{
+    $userId = getUserLoginId();
+    return Category::where('id', $id)->update(['is_deleted' => '1', 'deleted_by' => $userId]);
 }
