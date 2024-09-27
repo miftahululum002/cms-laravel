@@ -72,6 +72,9 @@ export default function Post({ posts, title }) {
                                     <th className="w-auto px-2 border border-slate-400 text-left">
                                         Konten
                                     </th>
+                                    <th className="w-auto px-2 border border-slate-400 text-left">
+                                        Gambar
+                                    </th>
                                     <th className="border border-slate-400 text-center">
                                         Opsi
                                     </th>
@@ -100,6 +103,12 @@ export default function Post({ posts, title }) {
                                         </td>
                                         <td className="w-auto px-2 border border-slate-400">
                                             {post.content}
+                                        </td>
+                                        <td className="w-auto px-2 border border-slate-400">
+                                            <img
+                                                className="border border-primary w-52"
+                                                src={"/storage/" + post.image}
+                                            />
                                         </td>
                                         <td className="px-2 border border-slate-400 text-center">
                                             <Link

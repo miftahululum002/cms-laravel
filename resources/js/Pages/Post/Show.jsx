@@ -24,6 +24,13 @@ export default function Post({ post, title }) {
                         </div>
                         <h2 className="font-bold text-lg mb-2">{post.title}</h2>
                         <hr />
+                        <div className="flex justify-center mb-2 mt-2">
+                            <img
+                                className="border border-primary w-52"
+                                src={"/storage/" + post.image}
+                            />
+                        </div>
+
                         <div className="text-md mb-2">{post.content}</div>
                         <div className="text-base">
                             <span className="font-bold">Kategori:</span>{" "}
