@@ -16,11 +16,13 @@ class PostHomeController extends Controller
         $categoryId = $cat ? $cat->id : null;
         $posts = getPostForHome($categoryId, 4);
         $title = 'Blog ';
+        $subtitle = 'Tulisan Terbaru';
         if (!empty($cat)) {
             $title .= $cat->name;
+            $subtitle = "Tulisan Kategori: $cat->name";
         }
-
         $this->data['title'] = $title;
+        $this->data['subtitle'] = $subtitle;
         $this->data['posts'] = $posts;
         return $this->render('Index');
     }
@@ -28,6 +30,9 @@ class PostHomeController extends Controller
     public function read($slug = null)
     {
         $post = getPostBySlug($slug);
+        if (!$post) {
+            return redirect()->route('home.blog.index');
+        }
         $this->data['title'] = $post->title;
         $this->data['post'] = $post;
         return $this->render('Read');
