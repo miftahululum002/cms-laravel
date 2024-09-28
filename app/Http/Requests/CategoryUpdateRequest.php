@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Lang;
 
 class CategoryUpdateRequest extends FormRequest
 {
@@ -24,6 +25,14 @@ class CategoryUpdateRequest extends FormRequest
         return [
             'id' => 'required|exists:App\Models\Category,id',
             'name' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => 'Field wajib diisi',
+            'exists' => 'Field tidak valid'
         ];
     }
 }

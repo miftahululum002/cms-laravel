@@ -25,4 +25,12 @@ class CategoryStoreRequest extends FormRequest
             'name' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'required' => 'Field wajib diisi',
+            'exists' => 'Field tidak valid'
+        ];
+    }
 }
