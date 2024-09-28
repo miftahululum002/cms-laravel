@@ -38,7 +38,7 @@ export default function Create({ status, title }) {
             <div className="w-1/2 mx-auto my-10 bg-white p-2">
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
-                        <InputLabel htmlFor="name" value="Judul" />
+                        <InputLabel htmlFor="name" value="Name" />
                         <TextInput
                             id="name"
                             type="text"
@@ -46,7 +46,7 @@ export default function Create({ status, title }) {
                             value={data.name}
                             className="mt-1 block w-full"
                             autoComplete="title"
-                            placeholder="Judul"
+                            placeholder="Name"
                             isFocused={true}
                             onChange={(e) => setData("name", e.target.value)}
                         />
@@ -55,7 +55,7 @@ export default function Create({ status, title }) {
 
                     <div className="flex items-center justify-end mt-4">
                         <PrimaryButton className="ms-4" disabled={processing}>
-                            Simpan
+                            Save
                         </PrimaryButton>
                     </div>
                 </form>

@@ -54,7 +54,7 @@ export default function Post({ posts, title }) {
                                 href={route("dashboard.posts.create")}
                                 className="bg-primary mb-2 text-white"
                             >
-                                Tambah
+                                Add New
                             </LinkButton>
                         </div>
                         <table className="table-auto w-full border-collapse border border-slate-400">
@@ -64,19 +64,19 @@ export default function Post({ posts, title }) {
                                         No
                                     </th>
                                     <th className="w-auto px-2 border border-slate-400 text-left">
-                                        Judul
+                                        Title
                                     </th>
                                     <th className="w-auto px-2 border border-slate-400 text-left">
-                                        Kategori
+                                        Categories
                                     </th>
                                     <th className="w-auto px-2 border border-slate-400 text-left">
-                                        Konten
+                                        Content
                                     </th>
                                     <th className="w-auto px-2 border border-slate-400 text-left">
-                                        Gambar
+                                        Image
                                     </th>
                                     <th className="border border-slate-400 text-center">
-                                        Opsi
+                                        Option
                                     </th>
                                 </tr>
                             </thead>
@@ -118,7 +118,7 @@ export default function Post({ posts, title }) {
                                                 )}
                                                 className="inline-flex text-primary font-bold justify-center items-center w-full"
                                             >
-                                                Lihat
+                                                Show
                                             </Link>
                                             <Link
                                                 href={route(
@@ -134,7 +134,7 @@ export default function Post({ posts, title }) {
                                                     confirmPostDeletion(post.id)
                                                 }
                                             >
-                                                Hapus
+                                                Delete
                                             </DangerButton>
                                         </td>
                                     </tr>

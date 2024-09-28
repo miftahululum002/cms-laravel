@@ -19,7 +19,7 @@ export default function Post({ post, title }) {
                                 href={route("dashboard.posts.index")}
                                 className="bg-yellow-200 mb-3 py-1 px-3 text-dark"
                             >
-                                Kembali
+                                Back
                             </Link>
                         </div>
                         <h2 className="font-bold text-lg mb-2">{post.title}</h2>
@@ -33,7 +33,7 @@ export default function Post({ post, title }) {
 
                         <div className="text-md mb-2">{post.content}</div>
                         <div className="text-base">
-                            <span className="font-bold">Kategori:</span>{" "}
+                            <span className="font-bold">Categories:</span>{" "}
                             {post.categories_data.map((category, index) => (
                                 <span
                                     className="inline-flex items-center border border-primary mb-1 px-1 py-1 mr-2 text-primary font-think text-xs tracking-widest"

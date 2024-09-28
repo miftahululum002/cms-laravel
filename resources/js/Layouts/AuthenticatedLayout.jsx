@@ -12,8 +12,8 @@ export default function Authenticated({ header, children }) {
         useState(false);
     const menus = [
         { name: "Dashboard", route: "dashboard" },
-        { name: "Tulisan", route: "dashboard.posts.index" },
-        { name: "Kategori Tulisan", route: "dashboard.categories.index" },
+        { name: "Posts", route: "dashboard.posts.index" },
+        { name: "Post Categories", route: "dashboard.categories.index" },
     ];
     return (
         <div className="min-h-screen bg-gray-100">
@@ -23,7 +23,6 @@ export default function Authenticated({ header, children }) {
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
                                 <Link href={route("dashboard")}>
-                                    {/* <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" /> */}
                                     <span>{appName}</span>
                                 </Link>
                             </div>
@@ -79,7 +78,7 @@ export default function Authenticated({ header, children }) {
                                             method="post"
                                             as="button"
                                         >
-                                            Log Out
+                                            Logout
                                         </Dropdown.Link>
                                     </Dropdown.Content>
                                 </Dropdown>
@@ -166,7 +165,7 @@ export default function Authenticated({ header, children }) {
                                 href={route("logout")}
                                 as="button"
                             >
-                                Log Out
+                                Logout
                             </ResponsiveNavLink>
                         </div>
                     </div>

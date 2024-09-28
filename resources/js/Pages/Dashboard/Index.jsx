@@ -16,9 +16,9 @@ export default function Dashboard({ title }) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">
-                            Selamat Datang Kembali{" "}
+                            Welcome Back{" "}
                             <span className="font-bold">{user.name}</span>
-                            <p>Semoga harimu menyenangkan</p>
+                            <p>Have a nice day</p>
                         </div>
                     </div>
                 </div>

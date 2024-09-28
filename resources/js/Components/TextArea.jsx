@@ -17,7 +17,7 @@ export default forwardRef(function TextArea(
             <textarea
                 {...props}
                 className={
-                    "border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm " +
+                    "border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-none shadow-sm " +
                     className
                 }
                 ref={input}

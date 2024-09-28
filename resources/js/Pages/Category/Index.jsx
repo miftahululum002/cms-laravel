@@ -77,7 +77,7 @@ export default function Categories({ categories, title }) {
                                 href={route("dashboard.categories.create")}
                                 className="bg-primary mb-2 text-white"
                             >
-                                Tambah
+                                Add New
                             </LinkButton>
                         </div>
                         <table className="table-auto w-full border-collapse border border-slate-400">
@@ -87,7 +87,7 @@ export default function Categories({ categories, title }) {
                                         No
                                     </th>
                                     <th className="w-auto px-2 border border-slate-400 text-left">
-                                        Nama
+                                        Name
                                     </th>
 
                                     <th className="w-auto px-2 border border-slate-400 text-left">
@@ -95,7 +95,7 @@ export default function Categories({ categories, title }) {
                                     </th>
 
                                     <th className="border border-slate-400 text-center">
-                                        Opsi
+                                        Option
                                     </th>
                                 </tr>
                             </thead>
@@ -123,7 +123,7 @@ export default function Categories({ categories, title }) {
                                                             )
                                                         }
                                                     >
-                                                        Kembalikan
+                                                        Restore
                                                     </PrimaryButton>
                                                 </>
                                             ) : (
@@ -138,7 +138,7 @@ export default function Categories({ categories, title }) {
                                                         }
                                                         className="inline-flex text-primary font-bold justify-center items-center w-full"
                                                     >
-                                                        Lihat
+                                                        Show
                                                     </Link>
                                                     <Link
                                                         href={route(
@@ -156,7 +156,7 @@ export default function Categories({ categories, title }) {
                                                             )
                                                         }
                                                     >
-                                                        Hapus
+                                                        Delete
                                                     </DangerButton>
                                                 </>
                                             )}
