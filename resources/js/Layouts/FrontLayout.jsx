@@ -154,7 +154,11 @@ export default function Front({ children }) {
                             <h2 className="font-bold text-4xl text-white mb-5">
                                 {appName}
                             </h2>
-                            <p>{author.email}</p>
+                            <p>
+                                <a href={`mailto:${author.email}`}>
+                                    {author.email}
+                                </a>
+                            </p>
                             <p>{author.address}</p>
                         </div>
                         <div className="w-full px-4 mb-12 md:w-1/2">
