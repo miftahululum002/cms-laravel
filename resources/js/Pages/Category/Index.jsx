@@ -75,7 +75,7 @@ export default function Categories({ categories, title }) {
                         <div>
                             <LinkButton
                                 href={route("dashboard.categories.create")}
-                                className="bg-primary mb-2 text-white"
+                                className="bg-primary mb-2 py-2 text-white"
                             >
                                 Add New
                             </LinkButton>
@@ -145,7 +145,7 @@ export default function Categories({ categories, title }) {
                                                             "dashboard.categories.edit",
                                                             category.id
                                                         )}
-                                                        className="inline-flex items-center px-2 py-1 mb-2 bg-primary border border-transparent rounded-none font-semibold text-xs text-white uppercase tracking-widest hover:bg-opacity-7 focus:bg-gray-700 active:bg-secondary focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
+                                                        className="inline-flex items-center px-2 py-1 mb-2 bg-primary border border-transparent rounded-none font-semibold text-xs text-white hover:bg-opacity-7 focus:bg-gray-700 active:bg-secondary focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
                                                     >
                                                         Edit
                                                     </Link>
@@ -183,11 +183,11 @@ export default function Categories({ categories, title }) {
                             className="rounded-none"
                             onClick={closeModal}
                         >
-                            Batal
+                            Cancel
                         </SecondaryButton>
 
                         <DangerButton className="ms-3" disabled={processing}>
-                            Hapus
+                            Delete
                         </DangerButton>
                     </div>
                 </form>
