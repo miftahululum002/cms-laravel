@@ -1,5 +1,6 @@
 import DangerButton from "@/Components/DangerButton";
 import LinkButton from "@/Components/LinkButton";
+import LinkText from "@/Components/LinkText";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import SecondaryButton from "@/Components/SecondaryButton";
 import { Head, Link, useForm } from "@inertiajs/react";
@@ -95,7 +96,7 @@ export default function Post({ posts, title }) {
                                                 (category, i) => (
                                                     <span
                                                         key={i}
-                                                        className="inline-flex items-center border border-primary mb-1 px-1 py-1 mr-2 text-primary font-think text-xs tracking-widest"
+                                                        className="inline-flex items-center border border-primary mb-1 px-1 py-1 mr-2 text-primary font-think text-xs"
                                                     >
                                                         {category.name}
                                                     </span>
@@ -112,15 +113,14 @@ export default function Post({ posts, title }) {
                                             />
                                         </td>
                                         <td className="px-2 border border-slate-400 text-center">
-                                            <Link
+                                            <LinkText
                                                 href={route(
                                                     "dashboard.posts.show",
                                                     post.id
                                                 )}
-                                                className="inline-flex text-primary font-bold justify-center items-center w-full"
                                             >
                                                 Show
-                                            </Link>
+                                            </LinkText>
                                             <Link
                                                 href={route(
                                                     "dashboard.posts.edit",

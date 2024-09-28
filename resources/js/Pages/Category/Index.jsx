@@ -1,6 +1,7 @@
 import DangerButton from "@/Components/DangerButton";
 import PrimaryButton from "@/Components/PrimaryButton";
 import LinkButton from "@/Components/LinkButton";
+import LinkText from "@/Components/LinkText";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import SecondaryButton from "@/Components/SecondaryButton";
 import { Head, Link, useForm } from "@inertiajs/react";
@@ -128,7 +129,7 @@ export default function Categories({ categories, title }) {
                                                 </>
                                             ) : (
                                                 <>
-                                                    <Link
+                                                    <LinkText
                                                         href={
                                                             route(
                                                                 "home.blog.index"
@@ -136,10 +137,9 @@ export default function Categories({ categories, title }) {
                                                             "?category=" +
                                                             category.slug
                                                         }
-                                                        className="inline-flex text-primary font-bold justify-center items-center w-full"
                                                     >
                                                         Show
-                                                    </Link>
+                                                    </LinkText>
                                                     <Link
                                                         href={route(
                                                             "dashboard.categories.edit",
