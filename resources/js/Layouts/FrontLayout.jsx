@@ -1,14 +1,39 @@
 import SectionSocialLink from "@/Components/SectionSocialLink";
 import { Link, usePage } from "@inertiajs/react";
+import { useEffect, useState } from "react";
 
 export default function Front({ children }) {
     const appName = import.meta.env.VITE_APP_NAME || "Laravel";
     const auth = usePage().props.auth;
     const home_categories = usePage().props.home_categories;
     const author = usePage().props.author;
+
+    const [hamburgerOpen, sethamburgerOpen] = useState(false);
+    const toggleHamburger = () => {
+        sethamburgerOpen(!hamburgerOpen);
+    };
+
+    const handleClickOutside = (e) => {
+        const hamburger = document.querySelector("#hamburger");
+        const navMenu = document.querySelector("#nav-menu");
+        if (e.target !== hamburger && e.target !== navMenu) {
+            sethamburgerOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener("click", handleClickOutside);
+
+        return () => {
+            window.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
     return (
         <>
-            <header className="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
+            <header
+                id="header"
+                className={`bg-transparent absolute top-0 left-0 w-full flex items-center z-10`}
+            >
                 <div className="container">
                     <div className="flex items-center justify-between relative">
                         <div className="px-4">
@@ -21,10 +46,13 @@ export default function Front({ children }) {
                         </div>
                         <div className="flex items-center px-4">
                             <button
+                                onClick={toggleHamburger}
                                 id="hamburger"
                                 name="hamburger"
                                 type="button"
-                                className="block absolute right-4 lg:hidden"
+                                className={`block absolute right-4 lg:hidden ${
+                                    hamburgerOpen ? "hamburger-active" : ""
+                                }`}
                             >
                                 <span className="humberger-line origin-top-left transition duration-300 ease-in-out"></span>
                                 <span className="humberger-line transition duration-300 ease-in-out"></span>
@@ -32,7 +60,9 @@ export default function Front({ children }) {
                             </button>
                             <nav
                                 id="nav-menu"
-                                className="hidden absolute py-5 bg-white shadow-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none lg:dark:bg-transparent"
+                                className={`${
+                                    hamburgerOpen ? "" : "hidden"
+                                } absolute py-5 bg-white shadow-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none lg:dark:bg-transparent`}
                             >
                                 <ul className="block lg:flex">
                                     <li className="group">
@@ -67,11 +97,21 @@ export default function Front({ children }) {
                                             Hubungi Kami
                                         </a>
                                     </li>
-                                    <nav className="mx-3 flex flex-1 justify-end">
+                                    <nav
+                                        className={`mx-3 flex flex-1 justify-end ${
+                                            hamburgerOpen
+                                                ? "flex justify-center items-center"
+                                                : "block"
+                                        }`}
+                                    >
                                         {auth.user ? (
                                             <Link
                                                 href={route("dashboard")}
-                                                className="rounded-none px-3 py-2 text-white bg-primary ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                                className={`rounded-none px-3 py-2 text-white bg-primary ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white ${
+                                                    hamburgerOpen
+                                                        ? "w-full text-center"
+                                                        : ""
+                                                }`}
                                             >
                                                 Dashboard
                                             </Link>
@@ -79,13 +119,21 @@ export default function Front({ children }) {
                                             <>
                                                 <Link
                                                     href={route("login")}
-                                                    className="rounded-none px-3 py-2 mr-2 text-white bg-primary ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                                    className={`rounded-none px-3 py-2 mr-2 text-white bg-primary ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white ${
+                                                        hamburgerOpen
+                                                            ? "w-full text-center"
+                                                            : ""
+                                                    }`}
                                                 >
                                                     Login
                                                 </Link>
                                                 <Link
                                                     href={route("register")}
-                                                    className="rounded-none px-3 py-2 text-white bg-primary ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                                    className={`rounded-none px-3 py-2 text-white bg-primary ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white ${
+                                                        hamburgerOpen
+                                                            ? "w-full text-center"
+                                                            : ""
+                                                    }`}
                                                 >
                                                     Register
                                                 </Link>
@@ -158,7 +206,7 @@ export default function Front({ children }) {
                 </div>
             </footer>
             <a
-                href="#home"
+                href="#header"
                 className="fixed hidden justify-center items-center z-[9999] bottom-4 right-4 p-4 h-14 w-14 bg-primary rounded-full hover:animate-pulse"
                 id="to-top"
             >
