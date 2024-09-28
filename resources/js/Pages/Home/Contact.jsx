@@ -25,7 +25,7 @@ export default function Home({ title }) {
                         <div className="w-full lg:w-2/3 lg:mx-auto">
                             <div className="w-full px-4 mb-8">
                                 <label
-                                    for="name"
+                                    htmlFor="name"
                                     className="text-base font-bold text-primary"
                                 >
                                     Nama <span className="text-red-500">*</span>
@@ -39,7 +39,7 @@ export default function Home({ title }) {
                             </div>
                             <div className="w-full px-4 mb-8">
                                 <label
-                                    for="email"
+                                    htmlFor="email"
                                     className="text-base font-bold text-primary"
                                 >
                                     Email
@@ -54,7 +54,7 @@ export default function Home({ title }) {
                             </div>
                             <div className="w-full px-4 mb-8">
                                 <label
-                                    for="message"
+                                    htmlFor="message"
                                     className="text-base font-bold text-primary"
                                 >
                                     Pesan
