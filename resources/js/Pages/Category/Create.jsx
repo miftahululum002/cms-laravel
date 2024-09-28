@@ -5,13 +5,7 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
 export default function Create({ status, title }) {
-    const {
-        data,
-        setData,
-        post: update,
-        processing,
-        errors,
-    } = useForm({
+    const { data, setData, post, processing, errors } = useForm({
         name: "",
     });
 
@@ -21,6 +15,7 @@ export default function Create({ status, title }) {
             // onFinish: () => reset("content"),
         });
     };
+    console.log(status);
     return (
         <AuthenticatedLayout
             header={
