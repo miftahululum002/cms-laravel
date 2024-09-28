@@ -9,7 +9,18 @@ class Category extends Model
 {
     use HasFactory;
     protected $table = 'categories';
-    protected $fillable = ['name', 'slug',];
+    protected $fillable = [
+        'name',
+        'slug',
+        'created_by',
+        'updated_by',
+        'is_deleted',
+        'deleted_by',
+        'deleted_at',
+        'is_restored',
+        'restored_by',
+        'restored_at'
+    ];
     protected $guarded = ['id'];
     public $timestamps = false;
 }
