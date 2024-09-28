@@ -15,13 +15,13 @@ class PostController extends Controller
     {
         $posts = Post::where('is_deleted', '0')->with('categories_data')->get();
         $this->data['posts'] = $posts;
-        $this->data['title'] = 'Tulisan';
+        $this->data['title'] = 'Posts';
         return $this->render('Index');
     }
 
     public function create()
     {
-        $this->data['title'] = 'Tambah Tulisan';
+        $this->data['title'] = 'Add New Post';
         $this->data['categories'] = getCategories();
         return $this->render('Create');
     }
@@ -49,7 +49,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        $this->data['title'] = 'Detail Tulisan';
+        $this->data['title'] = 'Detail Post';
         $data = $post;
         $postCategories = $post->categories_data;
 
@@ -65,7 +65,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $this->data['title'] = 'Edit Tulisan';
+        $this->data['title'] = 'Edit Post';
         $data = $post;
         $postCategories = $post->categories_data;
 

@@ -14,14 +14,14 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $this->data['title'] = 'Kategori Tulisan';
+        $this->data['title'] = 'Post Categories';
         $this->data['categories'] = getAllCategories();
         return $this->render('Index');
     }
 
     public function create()
     {
-        $this->data['title'] = 'Tambah Kategori';
+        $this->data['title'] = 'Add New Post Category';
         return $this->render('Create');
     }
 
@@ -41,7 +41,7 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         $this->data['category'] = $category;
-        $this->data['title'] = "Edit Kategori";
+        $this->data['title'] = "Edit Post Category";
         return $this->render('Edit');
     }
 
