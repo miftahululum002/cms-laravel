@@ -25,7 +25,9 @@ export default function Authenticated({ header, children }) {
                             <div className="flex">
                                 <div className="shrink-0 flex items-center">
                                     <Link href={route("dashboard")}>
-                                        <span>{appName}</span>
+                                        <span className="hover:text-primary">
+                                            {appName}
+                                        </span>
                                     </Link>
                                 </div>
 
