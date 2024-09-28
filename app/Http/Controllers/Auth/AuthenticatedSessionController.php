@@ -35,6 +35,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
         // setSession('is_login', true);
         $request->session()->put('is_login', true);
+        setActivityLog('Login', null, ['email' => $request->email]);
         return redirect()->intended(route('dashboard', absolute: false));
     }
 
@@ -43,6 +44,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        setActivityLog('Logout', null, null);
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

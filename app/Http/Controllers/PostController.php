@@ -31,7 +31,8 @@ class PostController extends Controller
         $input = $request->validated();
         $data = $input;
         $data['slug'] = getSlug($input['title']);
-        $data['created_by'] = getUserLoginId();
+        $userId = getUserLoginId();
+        $data['created_by'] = $userId;
         if ($request->hasFile('image')) {
             $data['image'] = uploadImagePost($request->file('image'));
         }
@@ -39,6 +40,7 @@ class PostController extends Controller
         try {
             $process = createPost($data);
             if (!$process['success']) {
+                setActivityLog('Create post', $userId, $data);
                 return redirect(route('dashboard.posts.create'))->with('error', $process['error']);
             }
             return redirect(route('dashboard.posts.index'));
@@ -93,6 +95,7 @@ class PostController extends Controller
         }
         try {
             updatePost($id, $data);
+            setActivityLog('Update post:' . $id, $userId, $data);
             return redirect(route('dashboard.posts.index'));
         } catch (Exception $e) {
             return redirect(route('dashboard.posts.edit', [$id]))->withErrors($e->getMessage());
@@ -104,6 +107,7 @@ class PostController extends Controller
         $input = $request->validate(['id' => 'required']);
         try {
             deletePost($input['id']);
+            setActivityLog('Delete post:' . $input['id'], null, $input);
             return redirect(route('dashboard.posts.index'));
         } catch (Exception $e) {
             return redirect(route('dashboard.posts.index'))->withErrors($e->getMessage());

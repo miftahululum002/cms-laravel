@@ -31,13 +31,11 @@ class ProfileController extends Controller
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
-
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
-
         $request->user()->save();
-
+        setActivityLog('Update profile', null, $request->all());
         return Redirect::route('profile.edit');
     }
 
@@ -50,6 +48,7 @@ class ProfileController extends Controller
             'password' => ['required', 'current_password'],
         ]);
         $user = $request->user();
+        setActivityLog('Delete account', $user->id, $user);
         Auth::logout();
         $user->delete();
         $request->session()->invalidate();
