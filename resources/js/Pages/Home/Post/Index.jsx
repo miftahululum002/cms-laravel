@@ -1,7 +1,7 @@
 import Front from "@/Layouts/FrontLayout";
 import { Link, Head } from "@inertiajs/react";
 
-export default function Home({ title, posts }) {
+export default function Home({ title, posts, subtitle }) {
     return (
         <Front>
             <Head title={title} />
@@ -12,8 +12,8 @@ export default function Home({ title, posts }) {
                             <h4 className="font-semibold text-lg text-primary mb-2">
                                 Blog
                             </h4>
-                            <h2 className="font-bold text-3xl mb-4 sm:text-4xl lg:text-5xl">
-                                Tulisan Terbaru
+                            <h2 className="font-bold text-2xl mb-4 sm:text-4xl lg:text-4xl">
+                                {subtitle}
                             </h2>
                             <p className="font-medium text-md text-secondary md:text-lg">
                                 Lorem ipsum dolor sit, amet consectetur

@@ -26,7 +26,7 @@ export default function Home({ title, posts }) {
                                 pertanyaan atau ingin berkolaborasi. Kami akan
                                 senang mendengar dari Anda.
                                 <span className="font-bold text-dark">
-                                    bukan!
+                                    Tulisan!
                                 </span>
                             </p>
 
