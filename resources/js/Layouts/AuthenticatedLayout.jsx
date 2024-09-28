@@ -1,5 +1,4 @@
-import { useState } from "react";
-import ApplicationLogo from "@/Components/ApplicationLogo";
+import { useState, useEffect } from "react";
 import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
@@ -16,6 +15,7 @@ export default function Authenticated({ header, children }) {
         { name: "Posts", route: "dashboard.posts.index" },
         { name: "Post Categories", route: "dashboard.categories.index" },
     ];
+
     return (
         <>
             <div className="min-h-screen bg-gray-100">
