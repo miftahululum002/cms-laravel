@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ActivityLog;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\PostCategory;
@@ -109,9 +110,15 @@ function getAllCategories()
     return Category::all();
 }
 
-function getCategoryBySlug($slug)
+function getCategoryBySlug($slug, $exceptId = null)
 {
-    return Category::where('slug', $slug)->first();
+    return Category::where('slug', $slug)
+        ->where(function ($query) use ($exceptId) {
+            if (!empty($exceptId)) {
+                $query->where('id', '<>', $exceptId);
+            }
+        })
+        ->first();
 }
 
 function deletePost($id)
@@ -178,6 +185,69 @@ function updateCategory($id, $data)
 
 function deleteCategory($id)
 {
+    return Category::where('id', $id)->update(getDataForDeleteData());
+}
+
+function setActivityLog($activity, $userId = null, $data = null)
+{
+    if (empty($userId)) {
+        $userId = getUserLoginId();
+    }
+    $object = [
+        'activity' => $activity,
+        'user_id' => getUserLoginId(),
+        'page_url' => url()->current(),
+        'data' => $data,
+        'created_by' => getUserLoginId(),
+    ];
+    return createActiviyLog($object);
+}
+
+function getUserAgent()
+{
+    return request()->header('User-Agent');
+}
+
+function getIp()
+{
+    return request()->ip();
+}
+
+function createActiviyLog($data)
+{
+    $data['ip_address'] = getIp();
+    if (!empty($data['data'])) {
+        $data['data'] = json_encode($data['data']);
+    }
+    $data['user_agent'] = getUserAgent();
+    return ActivityLog::create($data);
+}
+
+function getDataForDeleteData()
+{
+    return getDataForForm('delete');
+}
+
+function getDataRestoreData()
+{
+    return getDataForForm('restore');
+}
+
+function getDataForForm($action = 'delete')
+{
+    if (!in_array($action, ['delete', 'restore'])) {
+        return;
+    }
     $userId = getUserLoginId();
-    return Category::where('id', $id)->update(['is_deleted' => '1', 'deleted_by' => $userId]);
+    $data = [
+        'is_' . $action . 'd' => '1',
+        $action . 'd_at' => date('Y-m-d H:i:s'),
+        $action . 'd_by' => $userId,
+    ];
+    if ($action == 'restore') {
+        $data['is_deleted'] = '0';
+        $data['deleted_at'] = null;
+        $data['deleted_by'] = null;
+    }
+    return $data;
 }
