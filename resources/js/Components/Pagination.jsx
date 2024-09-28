@@ -3,9 +3,9 @@ import { Link } from "@inertiajs/react";
 export default function Pagination({ links }) {
     function getClassName(active) {
         if (active) {
-            return "mr-1 mb-1 px-4 py-3 text-sm leading-4 border rounded hover:bg-white focus:border-primary focus:text-primary bg-primary text-white";
+            return "mr-1 mb-1 px-2 py-2 text-sm leading-4 border rounded hover:bg-white focus:border-primary focus:text-primary bg-primary text-white";
         } else {
-            return "mr-1 mb-1 px-4 py-3 text-sm leading-4 border rounded hover:bg-white focus:border-primary focus:text-primary";
+            return "mr-1 mb-1 px-2 py-2 text-sm leading-4 border rounded hover:bg-white focus:border-primary focus:text-primary";
         }
     }
 
@@ -18,7 +18,7 @@ export default function Pagination({ links }) {
                             <div
                                 id="pagination-prev"
                                 key={key}
-                                className="mr-1 mb-1 px-4 py-3 text-sm leading-4 border rounded"
+                                className="mr-1 mb-1 px-2 py-2 text-sm leading-4 border rounded"
                             >
                                 {link.label}
                             </div>
