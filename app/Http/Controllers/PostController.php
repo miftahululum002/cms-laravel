@@ -13,7 +13,7 @@ class PostController extends Controller
     protected $directory = 'Post';
     public function index()
     {
-        $posts = Post::where('is_deleted', '0')->with('categories_data')->get();
+        $posts = Post::where('is_deleted', '0')->with('categories_data')->paginate(3);
         $this->data['posts'] = $posts;
         $this->data['title'] = 'Posts';
         return $this->render('Index');
