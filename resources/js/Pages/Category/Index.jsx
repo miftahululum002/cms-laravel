@@ -75,7 +75,7 @@ export default function Categories({ categories, title }) {
                         <div>
                             <LinkButton
                                 href={route("dashboard.categories.create")}
-                                className="bg-primary mb-2 py-2 text-white"
+                                className="bg-primary mb-2 py-1 text-white"
                             >
                                 Add New
                             </LinkButton>

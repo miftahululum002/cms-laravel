@@ -6,6 +6,7 @@ import { Head, Link, useForm } from "@inertiajs/react";
 import { useState } from "react";
 import Modal from "@/Components/Modal";
 import TextInput from "@/Components/TextInput";
+import Pagination from "@/Components/Pagination";
 
 export default function Post({ posts, title }) {
     const [confirmingPostDeletion, setConfirmingPostDeletion] = useState(false);
@@ -81,7 +82,7 @@ export default function Post({ posts, title }) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {posts.map((post, index) => (
+                                {posts.data.map((post, index) => (
                                     <tr key={index}>
                                         <td className="w-auto px-2 border border-slate-400 text-center">
                                             {index + 1}
@@ -141,6 +142,7 @@ export default function Post({ posts, title }) {
                                 ))}
                             </tbody>
                         </table>
+                        <Pagination links={posts.links} />
                     </div>
                 </div>
             </div>
