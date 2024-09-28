@@ -31,10 +31,10 @@ export default function Home({ title, posts }) {
                             </p>
 
                             <a
-                                href={route("home.contact")}
+                                href={route("register")}
                                 className="rounded-full bg-primary py-3 px-8 text-base font-semibold text-white transition duration-300 ease-in-out hover:opacity-80 hover:shadow-lg mb-10"
                             >
-                                Hubungi Kami
+                                Daftar Sekarang
                             </a>
                         </div>
                     </div>
