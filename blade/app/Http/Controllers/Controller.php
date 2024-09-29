@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
 use Illuminate\Http\Request;
 
 abstract class Controller
@@ -14,7 +13,7 @@ abstract class Controller
     protected function render($filename)
     {
         $this->setDataHook();
-        return Inertia::render($this->getView($filename), $this->data);
+        return view($this->getView($filename), $this->data);
     }
 
     protected function getView($filename)
@@ -29,6 +28,7 @@ abstract class Controller
             $this->data['home_categories'] = getCategories();
             // $this->data['is_login'] = getSession('is_login');
         }
+        $this->data['app_name'] = config('miftahululum.app_name');
         $this->data['author'] = config('miftahululum.author');
     }
 }
