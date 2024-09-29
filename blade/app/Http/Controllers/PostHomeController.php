@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class PostHomeController extends Controller
 {
-    protected $directory = 'Home/Post';
+    protected $directory = 'home.post';
     protected $isHome = true;
 
     public function index(Request $request)
@@ -24,7 +24,7 @@ class PostHomeController extends Controller
         $this->data['title'] = $title;
         $this->data['subtitle'] = $subtitle;
         $this->data['posts'] = $posts;
-        return $this->render('Index');
+        return $this->render('index');
     }
 
     public function read($slug = null)
@@ -35,6 +35,6 @@ class PostHomeController extends Controller
         }
         $this->data['title'] = $post->title;
         $this->data['post'] = $post;
-        return $this->render('Read');
+        return $this->render('read');
     }
 }
