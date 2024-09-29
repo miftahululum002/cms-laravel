@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'app_name' => 'Miftahul CMS',
     'author' => (object)[
         'name' => 'Miftahul Ulum',
         'address' => 'Jl. Panglima Sudirman RT 48 RW 14 Desa Codo Kec. Wajak Kab. Malang',
